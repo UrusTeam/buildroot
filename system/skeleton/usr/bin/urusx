@@ -1,0 +1,8 @@
+#!/bin/sh
+
+export DISPLAY=:0
+
+X :0 &
+matchbox-desktop &
+matchbox-panel  --orientation south &
+matchbox-window-manager &
