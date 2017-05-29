@@ -92,11 +92,11 @@ HOST_GCC_COMMON_CONF_OPTS = \
 	--disable-libssp \
 	--disable-multilib \
 	--disable-decimal-float \
-	--with-gmp=$(HOST_DIR) \
-	--with-mpc=$(HOST_DIR) \
-	--with-mpfr=$(HOST_DIR) \
-	--with-pkgversion="Buildroot $(BR2_VERSION_FULL)" \
-	--with-bugurl="http://bugs.buildroot.net/"
+	--with-gmp=$(HOST_DIR)/usr \
+	--with-mpc=$(HOST_DIR)/usr \
+	--with-mpfr=$(HOST_DIR)/usr \
+	--with-pkgversion="Urus System $(BR2_VERSION_FULL)" \
+	--with-bugurl="https://github.com/UrusTeam/URUS/issues"
 
 # Don't build documentation. It takes up extra space / build time,
 # and sometimes needs specific makeinfo versions to work
@@ -286,7 +286,7 @@ endif
 # so substitute those away.
 HOST_GCC_COMMON_TOOLCHAIN_WRAPPER_ARGS += -DBR_CCACHE_HASH=\"`\
 	printf '%s\n' $(subst $(HOST_DIR),@HOST_DIR@,\
-		$(subst --with-pkgversion="Buildroot $(BR2_VERSION_FULL)",,$($(PKG)_CONF_OPTS))) \
+		$(subst --with-pkgversion="Urus System $(BR2_VERSION_FULL)",,$($(PKG)_CONF_OPTS))) \
 		| sha256sum - $(HOST_GCC_COMMON_CCACHE_HASH_FILES) \
 		| cut -c -64 | tr -d '\n'`\"
 endif # BR2_CCACHE

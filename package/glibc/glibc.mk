@@ -116,7 +116,7 @@ define GLIBC_CONFIGURE_CMDS
 		--prefix=/usr \
 		--enable-shared \
 		$(if $(BR2_x86_64),--enable-lock-elision) \
-		--with-pkgversion="Buildroot" \
+		--with-pkgversion="Urus System" \
 		--without-cvs \
 		--disable-profile \
 		--without-gd \
