@@ -711,11 +711,11 @@ endif
 		{ echo "ERROR: we shouldn't have a /etc/ld.so.conf.d directory"; exit 1; } || true
 	mkdir -p $(TARGET_DIR)/etc
 	( \
-		echo "NAME=Buildroot"; \
+		echo "NAME=Buildroot - Urus System"; \
 		echo "VERSION=$(BR2_VERSION_FULL)"; \
-		echo "ID=buildroot"; \
+		echo "ID=buildroot - Urus System"; \
 		echo "VERSION_ID=$(BR2_VERSION)"; \
-		echo "PRETTY_NAME=\"Buildroot $(BR2_VERSION)\"" \
+		echo "PRETTY_NAME=\"Buildroot - Urus System $(BR2_VERSION)\"" \
 	) >  $(TARGET_DIR)/etc/os-release
 
 	@$(call MESSAGE,"Sanitizing RPATH in target tree")
