@@ -21,4 +21,4 @@
 #/usr/X11R6/bin/Xfbdev		     	f	4755	0	0	-	-	-	-	-
 #/etc/starturus	     	f	4755	0	0	-	-	-	-	-
 /usr/bin/urusx     	f	6755	0	0	-	-	-	-	-
-/usr/bin/X     	f	6755	0	0	-	-	-	-	-
+#/usr/bin/X     	f	6755	0	0	-	-	-	-	-
