@@ -17,11 +17,12 @@
 ::sysinit:/bin/mount -t proc proc /proc
 ::sysinit:/bin/mount -o remount,rw /
 ::sysinit:/bin/mkdir -p /dev/pts
-#::sysinit:/bin/mkdir -p /dev/shm
+::sysinit:/bin/mkdir -p /dev/shm
 ::sysinit:/bin/mount -a
 ::sysinit:/bin/hostname -F /etc/hostname
 # now run any rc scripts
 ::sysinit:/etc/init.d/rcS
+::sysinit:/bin/chmod -f 4775 /usr/bin/X
 
 #::sysinit:/etc/starturus
 
