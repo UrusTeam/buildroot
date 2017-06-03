@@ -3,6 +3,7 @@
 export DISPLAY=:0
 
 X :0 &
-matchbox-desktop &
-matchbox-panel  --orientation south &
 matchbox-window-manager &
+matchbox-desktop --bg img-stretched:/usr/share/urus/images/urus_logo.png &
+matchbox-panel  --orientation south &
+
