@@ -9,7 +9,7 @@ if [ -f ${BINARIES_DIR}/efi-part/startup.nsh ]; then
 set default="0"
 set timeout="5"
 
-menuentry "Buildroot" {
+menuentry "Urus System" {
 	linux /bzImage root=/dev/sda2 rootwait console=tty1
 }
 __EOF__
