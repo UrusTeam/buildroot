@@ -6,7 +6,7 @@ comment "Toolchain Buildroot Options"
 
 config BR2_TOOLCHAIN_BUILDROOT_VENDOR
 	string "custom toolchain vendor name"
-	default "buildroot"
+	default "urus"
 	help
 	  This option allows to customize the "vendor" part of the
 	  toolchain tuple, where the toolchain tuple has the form
