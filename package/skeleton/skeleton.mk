@@ -132,21 +132,6 @@ endef
 
 SKELETON_NETWORK_DHCP_IFACE = $(call qstrip,$(BR2_SYSTEM_DHCP))
 
-ifneq ($(SKELETON_NETWORK_DHCP_IFACE),)
-define SKELETON_SET_NETWORK_DHCP
-	( \
-		//echo ; \
-		//echo "auto $(SKELETON_NETWORK_DHCP_IFACE)"; \
-		//echo "iface $(SKELETON_NETWORK_DHCP_IFACE) inet dhcp"; \
-		//echo "	pre-up /etc/network/nfs_check"; \
-		//echo "	wait-delay 15"; \
-        echo ""; \
-	) >> $(TARGET_DIR)/etc/network/interfaces
-	$(INSTALL) -m 0755 -D $(SKELETON_PKGDIR)/nfs_check \
-		$(TARGET_DIR)/etc/network/nfs_check
-endef
-endif
-
 define SKELETON_SET_NETWORK
 	mkdir -p $(TARGET_DIR)/etc/network/
 	$(SKELETON_SET_NETWORK_LOCALHOST)
