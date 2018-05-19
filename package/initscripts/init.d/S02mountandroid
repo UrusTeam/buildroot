@@ -1,0 +1,41 @@
+#!/bin/sh
+#
+# Starts rpcbind.
+#
+
+start() {
+	printf "Mounting android resources: "
+	mkdir -p /system
+	mkdir -p /data
+	mount /dev/mmcblk0p25 /system
+	mount /dev/mmcblk0p27 /data
+	echo "OK"
+}
+stop() {
+	printf "Unmounting android resources: "
+    umount /system
+    umount /data
+	echo "OK"
+}
+restart() {
+	stop
+	start
+}
+
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  restart|reload)
+	restart
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
+
