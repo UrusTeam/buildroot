@@ -1,0 +1,86 @@
+diff --git a/urdiff/tslib.c b/urdiff/tslib.c
+index 4ef895a..68fc499 100644
+--- a/urdiff/tslib.c
++++ b/urdiff/tslib.c
+@@ -54,24 +54,37 @@ struct TslibPrivate {
+     int phys_screen;
+ };
+ 
++#define SLOTS 2
++#define SAMPLES 1
++
+ static void
+ TsRead(int fd, void *closure)
+ {
+     KdPointerInfo *pi = closure;
+     struct TslibPrivate *private = pi->driverPrivate;
+     struct ts_sample event;
++    struct ts_sample_mt **samp_mt = NULL;
+     long x = 0, y = 0;
+     unsigned long flags;
+ 
++    samp_mt = malloc(SAMPLES * sizeof(struct ts_sample_mt *));
++
++    for (int i = 0; i < SAMPLES; i++) {
++            samp_mt[i] = calloc(SLOTS, sizeof(struct ts_sample_mt));
++    }
++
+     if (private->raw_event_hook) {
+-        while (ts_read_raw(private->tsDev, &event, 1) == 1)
+-            private->raw_event_hook(event.x, event.y, event.pressure,
++        while (ts_read_raw(private->tsDev, &samp_mt[0][0], 1) == 1)
++            private->raw_event_hook(samp_mt[0][0].x, samp_mt[0][0].y, samp_mt[0][0].pressure,
+                                     private->raw_event_closure);
+         return;
+     }
+ 
+-    while (ts_read(private->tsDev, &event, 1) == 1) {
+-        if (event.pressure) {
++    /* ts_read(private->tsDev, &event, 1) */
++
++    while (ts_read_mt(private->tsDev, samp_mt, SLOTS, SAMPLES) >= 0) {
++
++        if (samp_mt[0][0].pressure) {
+             flags = KD_BUTTON_1;
+ 
+             /*
+@@ -80,22 +93,22 @@ TsRead(int fd, void *closure)
+              * then we send delta's so that we can track the entire vga screen.
+              */
+             if (KdCurScreen == private->phys_screen) {
+-                x = event.x;
+-                y = event.y;
++                x = samp_mt[0][0].x;
++                y = samp_mt[0][0].y;
+             }
+             else {
+                 flags |= KD_MOUSE_DELTA;
+                 if ((private->lastx == 0) || (private->lasty == 0)) {
+-                    x = event.x;
+-                    y = event.y;
++                    x = samp_mt[0][0].x;
++                    y = samp_mt[0][0].y;
+                 }
+                 else {
+-                    x = event.x - private->lastx;
+-                    y = event.y - private->lasty;
++                    x = samp_mt[0][0].x - private->lastx;
++                    y = samp_mt[0][0].y - private->lasty;
+                 }
+             }
+-            private->lastx = event.x;
+-            private->lasty = event.y;
++            private->lastx = samp_mt[0][0].x;
++            private->lasty = samp_mt[0][0].y;
+         }
+         else {
+             flags = 0;
+@@ -103,7 +116,7 @@ TsRead(int fd, void *closure)
+             y = private->lasty;
+         }
+ 
+-        KdEnqueuePointerEvent(pi, flags, x, y, event.pressure);
++        KdEnqueuePointerEvent(pi, flags, x, y, samp_mt[0][0].pressure);
+     }
+ }
+ 
