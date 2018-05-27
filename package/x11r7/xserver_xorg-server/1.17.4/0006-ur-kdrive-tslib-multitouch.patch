@@ -1,7 +1,7 @@
-diff --git a/urdiff/tslib.c b/urdiff/tslib.c
+diff --git a/hw/kdrive/linux/tslib.c b/hw/kdrive/linux/tslib.c
 index 4ef895a..68fc499 100644
---- a/urdiff/tslib.c
-+++ b/urdiff/tslib.c
+--- a/hw/kdrive/linux/tslib.c
++++ b/hw/kdrive/linux/tslib.c
 @@ -54,24 +54,37 @@ struct TslibPrivate {
      int phys_screen;
  };
