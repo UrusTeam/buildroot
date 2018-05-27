@@ -2,8 +2,9 @@
 
 export DISPLAY=:0
 
-X :0 -mouse tslib,,device=/dev/input/event2 -keyboard evdev,,device=/dev/input/event4 -mouse evdev,,device=/dev/input/event5 &
-matchbox-window-manager &
+Xfbdev :0 -mouse tslib,,device=/dev/input/event2 &
+sleep 3
+matchbox-window-manager -use_cursor no &
 matchbox-desktop --font "Sans Bold 20" --fontcol black --icon-size 70 --bg img-stretched:/usr/share/urus/images/urus_logo_540x960.png &
 matchbox-panel --size 70 --orientation south &
 
