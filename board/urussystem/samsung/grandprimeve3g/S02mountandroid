@@ -9,6 +9,7 @@ start() {
 	mkdir -p /data
 	mount /dev/mmcblk0p25 /system
 	mount /dev/mmcblk0p27 /data
+	fbset -rgba 8/0,8/8,8/16,0/0
 	echo "OK"
 }
 stop() {
