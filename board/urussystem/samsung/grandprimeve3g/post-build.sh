@@ -1,14 +1,15 @@
 #!/bin/sh
-# post-build.sh for Cubieboard2
-# 2013, Carlo Caione <carlo.caione@gmail.com>
+# post-build.sh for grandprimeve3g
+# 2018, Hiroshi Takey <htakey@gmail.com>
 
 BOARD_DIR="$(dirname $0)"
-MKIMAGE=$HOST_DIR/usr/bin/mkimage
-BOOT_CMD=$BOARD_DIR/boot.cmd
-BOOT_CMD_H=$BINARIES_DIR/boot.scr
+
+URUS_INITANDROID=$BOARD_DIR/S02mountandroid
+URUS_INITANDROIDTGT=${TARGET_DIR}/etc/init.d/
+
 URUSX_BIN=$BOARD_DIR/urusx
+URUSX_BINTGT=${TARGET_DIR}/usr/bin/
 
-cp $URUSX_BIN ${TARGET_DIR}
+cp -f $URUSX_BIN $URUSX_BINTGT
+cp -f $URUS_INITANDROID $URUS_INITANDROIDTGT
 
-# U-Boot script
-#$MKIMAGE -C none -A arm -T script -d $BOOT_CMD $BOOT_CMD_H
