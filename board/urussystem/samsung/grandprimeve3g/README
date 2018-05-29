@@ -1,0 +1,32 @@
+INSTALLATION:
+
+This procedure was tested on Ubuntu 14.04
+
+Requirements tools:
+ 
+ - gcc
+ - git
+ - heimdall                 (https://github.com/Benjamin-Dobell/Heimdall.git)
+ - Android Image Kitchen    (https://github.com/osm0sis/Android-Image-Kitchen.git)
+ - Mkbootimg                (https://github.com/osm0sis/mkbootimg.git)
+
+From shell:
+
+$ sudo apt-get install gcc git
+$ git clone https://github.com/Benjamin-Dobell/Heimdall.git
+$ cd Heimdall
+$ mkdir build
+$ cd build
+$ cmake .. -DDISABLE_FRONTEND=on
+$ make
+$ sudo make install
+$ git clone https://github.com/osm0sis/Android-Image-Kitchen.git
+$ git clone https://github.com/osm0sis/mkbootimg.git
+$ cd mkbootimg
+$ make
+
+Then you need to copy mkbootimg and unpackbootimg program to android image bin path.
+Now you are ready to unpack and repack the android image. Put on the root AIK
+the android image (boot.img or recovery.img) to unpack or repack the image with
+scripts.
+
