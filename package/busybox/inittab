@@ -20,8 +20,8 @@
 ::sysinit:/bin/mkdir -p /dev/shm
 ::sysinit:/bin/mount -a
 ::sysinit:/bin/hostname -F /etc/hostname
-::sysinit:/usr/bin/chvt 2
-::sysinit:/usr/bin/chvt 1
+#::sysinit:/usr/bin/chvt 2
+#::sysinit:/usr/bin/chvt 1
 # now run any rc scripts
 ::sysinit:/etc/init.d/rcS
 ::sysinit:/bin/chmod -f 4775 /usr/bin/X
