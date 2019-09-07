@@ -406,6 +406,8 @@ define LINUX_INSTALL_DTB
 		$(LINUX_ARCH_PATH)/boot/$(if $(wildcard \
 		$(addprefix $(LINUX_ARCH_PATH)/boot/dts/,$(LINUX_DTBS))),dts/),$(LINUX_DTBS)) \
 		$(1)
+        mkdir -p $(BINARIES_DIR)/overlays
+        cp -f $(LINUX_ARCH_PATH)/boot/dts/overlays/*.dtbo $(BINARIES_DIR)/overlays
 endef
 endif # BR2_LINUX_KERNEL_APPENDED_DTB
 endif # BR2_LINUX_KERNEL_DTB_IS_SELF_BUILT
