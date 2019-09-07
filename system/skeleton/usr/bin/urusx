@@ -3,7 +3,10 @@
 export DISPLAY=:0
 
 X :0 &
+sleep 1
 matchbox-window-manager &
 matchbox-desktop --bg img-stretched:/usr/share/urus/images/urus_logo.png &
 matchbox-panel  --orientation south &
-
+xset s off         # don't activate screensaver
+xset -dpms         # disable DPMS (Energy Star) features.
+xset s noblank     # don't blank the video device
