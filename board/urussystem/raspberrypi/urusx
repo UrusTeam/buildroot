@@ -3,5 +3,5 @@
 export DISPLAY=:0
 
 matchbox-window-manager &
-matchbox-desktop --font "Sans Bold 20" --fontcol black --icon-size 70 --bg img-stretched:/usr/share/urus/images/urus_logo_v2.png &
-matchbox-panel --size 70 --orientation south &
+matchbox-desktop --font "Sans 10" --fontcol black --icon-size 40 --bg img-stretched:/usr/share/urus/images/urus_logo_v2.png &
+matchbox-panel --size 40 --orientation south &
