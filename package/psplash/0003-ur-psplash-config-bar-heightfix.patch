@@ -1,0 +1,25 @@
+diff --git a/psplash-config.h b/psplash-config.h
+index 82bb76d..30306a2 100644
+--- a/psplash-config.h
++++ b/psplash-config.h
+@@ -29,6 +29,6 @@
+ #define PSPLASH_IMG_SPLIT_NUMERATOR 5
+ 
+ /* Position of the image split from top edge, denominator of fraction */
+-#define PSPLASH_IMG_SPLIT_DENOMINATOR 6
++#define PSPLASH_IMG_SPLIT_DENOMINATOR 7
+ 
+ #endif
+diff --git a/psplash.c b/psplash.c
+index 992e199..9b36359 100644
+--- a/psplash.c
++++ b/psplash.c
+@@ -75,7 +75,7 @@ psplash_draw_progress (PSplashFB *fb, int value)
+   x      = ((fb->width  - BAR_IMG_WIDTH)/2) + 4 ;
+   y      = SPLIT_LINE_POS(fb) + 4;
+   width  = BAR_IMG_WIDTH - 8; 
+-  height = BAR_IMG_HEIGHT - 8;
++  height = (BAR_IMG_HEIGHT / 3) - 8;
+ 
+   if (value > 0)
+     {
