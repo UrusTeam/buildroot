@@ -11,8 +11,8 @@ case "$1" in
 	/usr/bin/X :0 &
 	/bin/sleep 2
 	/usr/bin/psplash &
-	/bin/sleep 1	
-	/usr/bin/psplash-write "MSG Loading URUS OS..." 
+	/bin/sleep 1
+	/usr/bin/psplash-write "MSG Loading URUS OS..."
 	/usr/bin/psplash-write "PROGRESS 10"
 	/bin/sleep 1
 	#/etc/init.d/network start
@@ -22,9 +22,9 @@ case "$1" in
 	/bin/sleep 1
 	#/usr/bin/psplash-write "MSG Init OK!"
 	#/usr/bin/psplash &
-	/usr/bin/xset s off
 	/usr/bin/xset -dpms
 	/usr/bin/xset s noblank
+	/usr/bin/xset s off
 	/usr/bin/psplash-write "PROGRESS 100"
 	/usr/bin/psplash-write "MSG Init OK!"
 	/bin/sleep 1
