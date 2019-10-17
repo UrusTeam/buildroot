@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2019.05.1-00135-g7766323-dirty Configuration
+# Buildroot 2019.05.1-00138-gde8edb2 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_5=y
@@ -395,8 +395,8 @@ BR2_INIT_BUSYBOX=y
 # BR2_INIT_NONE is not set
 # BR2_ROOTFS_DEVICE_CREATION_STATIC is not set
 # BR2_ROOTFS_DEVICE_CREATION_DYNAMIC_DEVTMPFS is not set
-BR2_ROOTFS_DEVICE_CREATION_DYNAMIC_MDEV=y
-# BR2_ROOTFS_DEVICE_CREATION_DYNAMIC_EUDEV is not set
+# BR2_ROOTFS_DEVICE_CREATION_DYNAMIC_MDEV is not set
+BR2_ROOTFS_DEVICE_CREATION_DYNAMIC_EUDEV=y
 BR2_ROOTFS_DEVICE_TABLE="system/device_table.txt"
 # BR2_ROOTFS_DEVICE_TABLE_SUPPORTS_EXTENDED_ATTRIBUTES is not set
 # BR2_ROOTFS_MERGED_USR is not set
@@ -853,11 +853,11 @@ BR2_PACKAGE_E2FSPROGS_FSCK=y
 # BR2_PACKAGE_GHOSTSCRIPT is not set
 BR2_PACKAGE_GLMARK2_EGL_GLES=y
 BR2_PACKAGE_GLMARK2_GL=y
-BR2_PACKAGE_GLMARK2=y
+# BR2_PACKAGE_GLMARK2 is not set
 # BR2_PACKAGE_GNUPLOT is not set
 # BR2_PACKAGE_JHEAD is not set
 # BR2_PACKAGE_KMSCUBE is not set
-# BR2_PACKAGE_LIBVA_UTILS is not set
+BR2_PACKAGE_LIBVA_UTILS=y
 # BR2_PACKAGE_MESA3D_DEMOS is not set
 BR2_PACKAGE_NETSURF_ARCH_SUPPORTS=y
 # BR2_PACKAGE_NETSURF is not set
@@ -923,8 +923,29 @@ BR2_PACKAGE_PROVIDES_LIBEGL="mesa3d"
 BR2_PACKAGE_PROVIDES_LIBGLES="mesa3d"
 # BR2_PACKAGE_OCRAD is not set
 BR2_PACKAGE_PSPLASH=y
-# BR2_PACKAGE_SDL is not set
-# BR2_PACKAGE_SDL2 is not set
+BR2_PACKAGE_SDL=y
+BR2_PACKAGE_SDL_FBCON=y
+BR2_PACKAGE_SDL_X11=y
+BR2_PACKAGE_SDL_GFX=y
+# BR2_PACKAGE_SDL_IMAGE is not set
+BR2_PACKAGE_SDL_MIXER=y
+# BR2_PACKAGE_SDL_NET is not set
+# BR2_PACKAGE_SDL_SOUND is not set
+# BR2_PACKAGE_SDL_TTF is not set
+BR2_PACKAGE_SDL2=y
+
+#
+# DirectFB video driver needs directfb
+#
+BR2_PACKAGE_SDL2_X11=y
+BR2_PACKAGE_SDL2_KMSDRM=y
+BR2_PACKAGE_SDL2_OPENGL=y
+BR2_PACKAGE_SDL2_OPENGLES=y
+BR2_PACKAGE_SDL2_GFX=y
+# BR2_PACKAGE_SDL2_IMAGE is not set
+BR2_PACKAGE_SDL2_MIXER=y
+# BR2_PACKAGE_SDL2_NET is not set
+# BR2_PACKAGE_SDL2_TTF is not set
 # BR2_PACKAGE_TK is not set
 
 #
@@ -937,10 +958,7 @@ BR2_PACKAGE_QT5_JSCORE_AVAILABLE=y
 #
 # tekui needs a Lua interpreter and a toolchain w/ threads, dynamic library
 #
-
-#
-# weston needs udev and a toolchain w/ locale, threads, dynamic library, headers >= 3.0
-#
+# BR2_PACKAGE_WESTON is not set
 BR2_PACKAGE_XORG7=y
 
 #
@@ -1100,16 +1118,10 @@ BR2_PACKAGE_XAPP_XSET=y
 #
 # X11R7 Drivers
 #
-
-#
-# xf86-input-evdev requires udev to be enabled
-#
+BR2_PACKAGE_XDRIVER_XF86_INPUT_EVDEV=y
 BR2_PACKAGE_XDRIVER_XF86_INPUT_JOYSTICK=y
 BR2_PACKAGE_XDRIVER_XF86_INPUT_KEYBOARD=y
-
-#
-# xf86-input-libinput needs udev /dev management and a toolchain w/ locale
-#
+BR2_PACKAGE_XDRIVER_XF86_INPUT_LIBINPUT=y
 BR2_PACKAGE_XDRIVER_XF86_INPUT_MOUSE=y
 # BR2_PACKAGE_XDRIVER_XF86_INPUT_SYNAPTICS is not set
 # BR2_PACKAGE_XDRIVER_XF86_INPUT_TSLIB is not set
@@ -1281,10 +1293,10 @@ BR2_PACKAGE_MATCHBOX_PANEL=y
 # BR2_PACKAGE_LINUX_FIRMWARE is not set
 # BR2_PACKAGE_RPI_BT_FIRMWARE is not set
 BR2_PACKAGE_RPI_FIRMWARE=y
-BR2_PACKAGE_RPI_FIRMWARE_DEFAULT=y
-# BR2_PACKAGE_RPI_FIRMWARE_X is not set
+# BR2_PACKAGE_RPI_FIRMWARE_DEFAULT is not set
+BR2_PACKAGE_RPI_FIRMWARE_X=y
 # BR2_PACKAGE_RPI_FIRMWARE_CD is not set
-BR2_PACKAGE_RPI_FIRMWARE_BOOT=""
+BR2_PACKAGE_RPI_FIRMWARE_BOOT="_x"
 BR2_PACKAGE_RPI_FIRMWARE_INSTALL_DTB_OVERLAYS=y
 # BR2_PACKAGE_RPI_FIRMWARE_INSTALL_VCDBG is not set
 # BR2_PACKAGE_RPI_WIFI_FIRMWARE is not set
@@ -1302,14 +1314,8 @@ BR2_PACKAGE_RPI_FIRMWARE_INSTALL_DTB_OVERLAYS=y
 # BR2_PACKAGE_AER_INJECT is not set
 # BR2_PACKAGE_AM335X_PRU_PACKAGE is not set
 # BR2_PACKAGE_AVRDUDE is not set
-
-#
-# bcache-tools needs udev /dev management
-#
-
-#
-# brickd needs udev /dev management, a toolchain w/ threads, wchar
-#
+# BR2_PACKAGE_BCACHE_TOOLS is not set
+# BR2_PACKAGE_BRICKD is not set
 # BR2_PACKAGE_BRLTTY is not set
 # BR2_PACKAGE_CBOOTIMAGE is not set
 # BR2_PACKAGE_CC_TOOL is not set
@@ -1325,19 +1331,16 @@ BR2_PACKAGE_DBUS_GLIB=y
 # BR2_PACKAGE_DEVMEM2 is not set
 # BR2_PACKAGE_DFU_UTIL is not set
 # BR2_PACKAGE_DMRAID is not set
-
-#
-# dt-utils needs udev /dev management
-#
+# BR2_PACKAGE_DT_UTILS is not set
 # BR2_PACKAGE_DTV_SCAN_TABLES is not set
 # BR2_PACKAGE_DUMP1090 is not set
 # BR2_PACKAGE_DVB_APPS is not set
 # BR2_PACKAGE_DVBSNOOP is not set
 # BR2_PACKAGE_EDID_DECODE is not set
-
-#
-# eudev needs eudev /dev management
-#
+BR2_PACKAGE_EUDEV=y
+BR2_PACKAGE_PROVIDES_UDEV="eudev"
+# BR2_PACKAGE_EUDEV_RULES_GEN is not set
+BR2_PACKAGE_EUDEV_ENABLE_HWDB=y
 # BR2_PACKAGE_EVEMU is not set
 # BR2_PACKAGE_EVTEST is not set
 # BR2_PACKAGE_FAN_CTRL is not set
@@ -1443,25 +1446,14 @@ BR2_PACKAGE_SPI_TOOLS=y
 # BR2_PACKAGE_UBOOT_TOOLS is not set
 # BR2_PACKAGE_UBUS is not set
 # BR2_PACKAGE_UCCP420WLAN is not set
-
-#
-# udisks needs udev /dev management
-#
+BR2_PACKAGE_HAS_UDEV=y
+# BR2_PACKAGE_UDISKS is not set
 # BR2_PACKAGE_UHUBCTL is not set
-
-#
-# upower needs udev /dev management
-#
+# BR2_PACKAGE_UPOWER is not set
 # BR2_PACKAGE_USB_MODESWITCH is not set
 # BR2_PACKAGE_USB_MODESWITCH_DATA is not set
-
-#
-# usbmount requires udev to be enabled
-#
-
-#
-# usbutils needs udev /dev management and toolchain w/ threads
-#
+# BR2_PACKAGE_USBMOUNT is not set
+# BR2_PACKAGE_USBUTILS is not set
 # BR2_PACKAGE_W_SCAN is not set
 # BR2_PACKAGE_WF111 is not set
 # BR2_PACKAGE_WIPE is not set
@@ -1789,6 +1781,7 @@ BR2_PACKAGE_PIXMAN=y
 BR2_PACKAGE_WAFFLE_SUPPORTS_GLX=y
 BR2_PACKAGE_WAFFLE_SUPPORTS_WAYLAND=y
 BR2_PACKAGE_WAFFLE_SUPPORTS_X11_EGL=y
+BR2_PACKAGE_WAFFLE_SUPPORTS_GBM=y
 # BR2_PACKAGE_WAFFLE is not set
 BR2_PACKAGE_WAYLAND=y
 BR2_PACKAGE_WAYLAND_PROTOCOLS=y
@@ -1818,33 +1811,21 @@ BR2_PACKAGE_WPEWEBKIT_ARCH_SUPPORTS_JIT=y
 BR2_PACKAGE_GNU_EFI_ARCH_SUPPORTS=y
 # BR2_PACKAGE_GNU_EFI is not set
 # BR2_PACKAGE_HACKRF is not set
-
-#
-# hidapi needs udev /dev management and a toolchain w/ NPTL threads
-#
+# BR2_PACKAGE_HIDAPI is not set
 # BR2_PACKAGE_LCDAPI is not set
 # BR2_PACKAGE_LET_ME_CREATE is not set
 # BR2_PACKAGE_LIBAIO is not set
-
-#
-# libatasmart requires udev to be enabled
-#
+# BR2_PACKAGE_LIBATASMART is not set
 # BR2_PACKAGE_LIBCEC is not set
 # BR2_PACKAGE_LIBFREEFARE is not set
 # BR2_PACKAGE_LIBFTDI is not set
 # BR2_PACKAGE_LIBFTDI1 is not set
 # BR2_PACKAGE_LIBGPHOTO2 is not set
 # BR2_PACKAGE_LIBGPIOD is not set
-
-#
-# libgudev needs udev /dev handling and a toolchain w/ wchar, threads
-#
+# BR2_PACKAGE_LIBGUDEV is not set
 # BR2_PACKAGE_LIBHID is not set
 # BR2_PACKAGE_LIBIIO is not set
-
-#
-# libinput needs udev /dev management and a toolchain w/ locale
-#
+BR2_PACKAGE_LIBINPUT=y
 # BR2_PACKAGE_LIBIQRF is not set
 # BR2_PACKAGE_LIBLLCP is not set
 # BR2_PACKAGE_LIBMBIM is not set
@@ -1946,10 +1927,7 @@ BR2_PACKAGE_LIBXML2=y
 # BR2_PACKAGE_LIBASS is not set
 # BR2_PACKAGE_LIBBDPLUS is not set
 # BR2_PACKAGE_LIBBLURAY is not set
-
-#
-# libcamera needs udev and a toolchain w/ C++, threads, gcc >= 5
-#
+# BR2_PACKAGE_LIBCAMERA is not set
 # BR2_PACKAGE_LIBDCADEC is not set
 # BR2_PACKAGE_LIBDVBCSA is not set
 # BR2_PACKAGE_LIBDVBPSI is not set
@@ -2087,10 +2065,7 @@ BR2_PACKAGE_LIBTIRPC=y
 # BR2_PACKAGE_OPENLDAP is not set
 # BR2_PACKAGE_OPENMPI is not set
 # BR2_PACKAGE_OPENPGM is not set
-
-#
-# openzwave needs udev and a toolchain w/ C++, threads, wchar
-#
+# BR2_PACKAGE_OPENZWAVE is not set
 # BR2_PACKAGE_ORTP is not set
 # BR2_PACKAGE_PAHO_MQTT_C is not set
 # BR2_PACKAGE_PAHO_MQTT_CPP is not set
@@ -2469,10 +2444,7 @@ BR2_PACKAGE_MONGREL2_LIBC_SUPPORTS=y
 # BR2_PACKAGE_NETSNMP is not set
 # BR2_PACKAGE_NETSTAT_NAT is not set
 # BR2_PACKAGE_NET_TOOLS is not set
-
-#
-# NetworkManager needs udev /dev management and a glibc toolchain w/ headers >= 3.2, dynamic library
-#
+# BR2_PACKAGE_NETWORK_MANAGER is not set
 # BR2_PACKAGE_NFACCT is not set
 # BR2_PACKAGE_NFTABLES is not set
 # BR2_PACKAGE_NGINX is not set
