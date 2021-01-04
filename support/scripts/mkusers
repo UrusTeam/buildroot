@@ -51,6 +51,14 @@ PASSWD_METHOD="$( sed -r -e '/^BR2_TARGET_GENERIC_PASSWD_METHOD="(.*)"$/!d;'    
                          "${BR2_CONFIG}"                                        \
                 )"
 
+
+# sudo doesn't work with sha256 when uclibc is used.
+
+PASSWD_UCLIBC="$( sed -r -e '/^BR2_TOOLCHAIN_USES_UCLIBC=(.*)$/!d;'    \
+                         -e 's//\1/;'                                           \
+                         "${BR2_CONFIG}"                                        \
+                )"
+
 #----------------------------------------------------------------------------
 get_uid() {
     local username="${1}"
@@ -286,7 +294,11 @@ add_user_to_group() {
 encode_password() {
     local passwd="${1}"
 
-    mkpasswd -m "${PASSWD_METHOD}" "${passwd}"
+    if [ "$PASSWD_UCLIBC" != "y" ] ; then
+        mkpasswd -m "${PASSWD_METHOD}" "${passwd}"
+    else
+        mkpasswd -m "md5" "${passwd}"
+    fi
 }
 
 #----------------------------------------------------------------------------
