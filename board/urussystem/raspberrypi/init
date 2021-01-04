@@ -1,0 +1,48 @@
+#!/bin/sh
+
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+CLRCOLOR='\033[0m'
+
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
+
+echo 0 > /proc/sys/kernel/printk
+busybox --install -s
+
+mknod /dev/null c 1 3
+mknod /dev/tty c 5 0
+mdev -s
+
+clear
+
+echo -e "${GREEN}Welcome to URUS Service Mode!${CLRCOLOR}"
+echo -e "${GREEN}checking disks${CLRCOLOR}"
+e2fsck -f -y /dev/mmcblk0p2
+dosfsck -c ascii -a /dev/mmcblk0p1
+echo -e "${GREEN}Expanding partition to max disk size${CLRCOLOR}"
+parted /dev/mmcblk0 resizepart 2 100%
+resize2fs -f /dev/mmcblk0p2
+echo -e "${GREEN}Partition expanded"
+urus_initramfs 0
+
+printf "\n\n"
+
+inkey="";
+while [ "$inkey" = "" ]; do
+    seconds=5;
+    date1=$((`date +%s` + $seconds));
+    while [ "$date1" -ge `date +%s` ] && [ "$inkey" = "" ]; do
+        echo -ne "${RED}Reboot in... $(date -u --date @$(($date1 - `date +%s` )) +%S)\r${CLRCOLOR}";
+        read -t 1 -n 1 inkey;
+    done
+    if [ "$inkey" != "" ] ; then
+        export PS1='\[\033[0;32m\]\(urus-service-mode):\[\033[36m\]\W\[\033[0m\] \# '
+        /bin/sh
+        inkey="";
+    else
+        inkey="x"
+    fi
+done
+
+reboot -f
