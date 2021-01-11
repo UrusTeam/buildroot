@@ -4,12 +4,24 @@
 #
 
 export DISPLAY=:0
+AMIXER="no"
+ALSACTL="no"
+
+if [ -e /usr/bin/amixer ] ; then
+AMIXER="yes"
+fi
+
+if [ -e /usr/sbin/alsactl ] ; then
+ALSACTL="yes"
+fi
 
 case "$1" in
   start)
-	echo "Starting psplash..."
-	/usr/bin/X :0 &
-	/bin/sleep 2
+    clear
+    echo 0 > /proc/sys/kernel/printk
+	echo "Starting..."
+	/usr/bin/X :0 &>/dev/null &
+	/bin/sleep 3
 	/usr/bin/psplash &
 	/bin/sleep 1
 	/usr/bin/psplash-write "MSG Loading URUS OS..."
@@ -17,7 +29,7 @@ case "$1" in
 	/bin/sleep 1
 	#/etc/init.d/network start
 	/usr/bin/psplash-write "PROGRESS 50"
-	/bin/login -f urusapp
+	exec /bin/login -f urusapp < /dev/tty2 > /dev/tty2 2>&1 &
 	/usr/bin/psplash-write "PROGRESS 90"
 	/bin/sleep 1
 	#/usr/bin/psplash-write "MSG Init OK!"
@@ -28,9 +40,18 @@ case "$1" in
 	/usr/bin/psplash-write "PROGRESS 100"
 	/usr/bin/psplash-write "MSG Init OK!"
 	/bin/sleep 1
+    if [ "$AMIXER" = "yes" ] ; then
+        /usr/bin/amixer -c 0 cset numid=3 1 &>/dev/null
+    fi
+    if [ "$ALSACTL" = "yes" ] ; then
+        /usr/sbin/alsactl restore
+    fi
 	/usr/bin/psplash-write "QUIT"
 	;;
   stop)
+    if [ "$ALSACTL" = "yes" ] ; then
+        /usr/sbin/alsactl store
+    fi
 	;;
   restart|reload)
 	;;
