@@ -24,7 +24,7 @@ echo -e "${GREEN}Expanding partition to max disk size${CLRCOLOR}"
 parted /dev/mmcblk0 resizepart 2 100%
 resize2fs -f /dev/mmcblk0p2
 echo -e "${GREEN}Partition expanded"
-urus_initramfs 0
+urus_srvmode 0
 
 printf "\n\n"
 
