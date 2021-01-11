@@ -5,7 +5,7 @@ RED='\033[0;31m'
 CLRCOLOR='\033[0m'
 
 if [ "x$1" != "x" ] ; then
-    echo -e "${GREEN}URUS Initramfs${CLRCOLOR}"
+    echo -e "${GREEN}URUS Service Mode${CLRCOLOR}"
 else
     printf "${GREEN}missing arguments!\n${CLRCOLOR}"
     printf "\nusage: $0 [NUMBER]\n"
@@ -17,11 +17,11 @@ fi
 mount /dev/mmcblk0p1 /mnt
 
 if [ "x$1" != "x0" ] ; then
-    sed -i -r -e 's:^.*(initramfs rootfs.cpio.gz):\1:;' /mnt/config.txt
-    echo -e "${GREEN}Enabled URUS Initramfs${CLRCOLOR}"
+    sed -i -r -e 's:^.*(initramfs urus_srvmodefs.cpio.gz):\1:;' /mnt/config.txt
+    echo -e "${GREEN}Enabled URUS Service Mode${CLRCOLOR}"
 else
-    sed -i -r -e 's:^.*(initramfs rootfs.cpio.gz):#\1:;' /mnt/config.txt
-    echo -e "${GREEN}Disabled URUS Initramfs${CLRCOLOR}"
+    sed -i -r -e 's:^.*(initramfs urus_srvmodefs.cpio.gz):#\1:;' /mnt/config.txt
+    echo -e "${GREEN}Disabled URUS Service Mode${CLRCOLOR}"
 fi
 
 umount /mnt
