@@ -199,6 +199,12 @@ define BUSYBOX_PREFER_STATIC
 endef
 endif
 
+ifeq ($(BR2_TOOLCHAIN_USES_UCLIBC),y)
+define BUSYBOX_PREFER_STATIC
+	$(call KCONFIG_ENABLE_OPT,CONFIG_STATIC,$(BUSYBOX_BUILD_CONFIG))
+endef
+endif
+
 define BUSYBOX_INSTALL_UDHCPC_SCRIPT
 	if grep -q CONFIG_UDHCPC=y $(@D)/.config; then \
 		$(INSTALL) -m 0755 -D package/busybox/udhcpc.script \
