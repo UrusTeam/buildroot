@@ -29,7 +29,7 @@ case "$1" in
 	/bin/sleep 1
 	#/etc/init.d/network start
 	/usr/bin/psplash-write "PROGRESS 50"
-	exec /bin/login -f urusapp < /dev/tty2 > /dev/tty2 2>&1 &
+	exec sh -c "openvt -s clear && su urusapp -c /usr/bin/urusx" &
 	/usr/bin/psplash-write "PROGRESS 90"
 	/bin/sleep 1
 	#/usr/bin/psplash-write "MSG Init OK!"
