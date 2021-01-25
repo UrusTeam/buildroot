@@ -95,6 +95,7 @@ endif
 ifeq ($(BR2_PACKAGE_WESTON_DRM),y)
 WESTON_CONF_OPTS += \
 	--enable-drm-compositor \
+	--with-cairo-glesv2 \
 	WESTON_NATIVE_BACKEND=drm-backend.so
 else
 WESTON_CONF_OPTS += --disable-drm-compositor
