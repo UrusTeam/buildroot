@@ -84,13 +84,13 @@ CAIRO_CONF_OPTS += --disable-gobject
 endif
 
 # Can use GL or GLESv2 but not both
-ifeq ($(BR2_PACKAGE_HAS_LIBGL),y)
-CAIRO_CONF_OPTS += --enable-gl --disable-glesv2
-CAIRO_DEPENDENCIES += libgl
-else
 ifeq ($(BR2_PACKAGE_HAS_LIBGLES),y)
 CAIRO_CONF_OPTS += --disable-gl --enable-glesv2
 CAIRO_DEPENDENCIES += libgles
+else
+ifeq ($(BR2_PACKAGE_HAS_LIBGL),y)
+CAIRO_CONF_OPTS += --enable-gl --disable-glesv2
+CAIRO_DEPENDENCIES += libgl
 else
 CAIRO_CONF_OPTS += --disable-gl --disable-glesv2
 endif
