@@ -97,6 +97,10 @@ WESTON_CONF_OPTS += \
 	--enable-drm-compositor \
 	--with-cairo-glesv2 \
 	WESTON_NATIVE_BACKEND=drm-backend.so
+define WESTON_PERMISSIONS
+	/usr/bin/weston f 4755 0 0 - - - - -
+	/usr/bin/weston-terminal f 4755 0 0 - - - - -
+endef
 else
 WESTON_CONF_OPTS += --disable-drm-compositor
 endif
