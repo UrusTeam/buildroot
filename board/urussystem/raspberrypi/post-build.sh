@@ -25,8 +25,8 @@ fi
 #tty1::once:/bin/login -f urusapp # URUS APP user login' ${TARGET_DIR}/etc/inittab
 #fi
 
-cp $BOARD_DIR/10-urus-app-sudoers ${TARGET_DIR}/etc/sudoers.d/
-cp $BOARD_DIR/urus_weston.ini ${TARGET_DIR}/etc/
+cp -f $BOARD_DIR/10-urus-app-sudoers ${TARGET_DIR}/etc/sudoers.d/
+cp -f $BOARD_DIR/urus_weston.ini ${TARGET_DIR}/etc/
 
 cp -f $BOARD_DIR/config-$BOARD_NAME.txt $BINARIES_DIR/rpi-firmware/config.txt
 cp -f $BOARD_DIR/cmdline-$BOARD_NAME.txt $BINARIES_DIR/rpi-firmware/cmdline.txt
