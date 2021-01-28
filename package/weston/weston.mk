@@ -50,6 +50,10 @@ endef
 WESTON_CONF_OPTS += -Dweston-launch=true
 WESTON_DEPENDENCIES += linux-pam
 else
+define WESTON_PERMISSIONS
+	/usr/bin/weston f 4755 0 0 - - - - -
+	/usr/bin/weston-terminal f 4755 0 0 - - - - -
+endef
 WESTON_CONF_OPTS += -Dweston-launch=false
 endif
 
