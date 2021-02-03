@@ -20,7 +20,7 @@ case "$1" in
     clear
     echo 0 > /proc/sys/kernel/printk
 	echo "Starting..."
-	/usr/bin/X :0 &>/dev/null &
+	/usr/bin/X vt7 :0 &>/dev/null &
 	/bin/sleep 3
 	/usr/bin/psplash &
 	/bin/sleep 1
