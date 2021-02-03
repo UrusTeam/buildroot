@@ -5,7 +5,7 @@
 ################################################################################
 
 ifeq ($(BR2_PACKAGE_WXURUS_315),y)
-WXURUS_VERSION = 0b8935285d35ca6bbe2fbd8e99be91d27b3929b9
+WXURUS_VERSION = 0a7e42a6b51272d509d873ec6dda70989c2da728
 WXURUS_SITE = https://github.com/hiro2233/wxWidgets
 WXURUS_SITE_METHOD = git
 WXURUS_GIT_SUBMODULES = YES
@@ -52,7 +52,7 @@ else ifeq ($(BR2_PACKAGE_LIBGTK2),y)
 WXURUS_CONF_OPTS += --with-gtk=2
 WXURUS_DEPENDENCIES += libgtk2
 WXURUS_CONF_OPTS += --without-gtkprint
-WXURUS_CONF_OPTS += --disable-postscript
+#WXURUS_CONF_OPTS += --disable-postscript
 WXURUS_CONF_OPTS += --enable-graphics_ctx
 WXURUS_CONF_OPTS += --without-libnotify
 WXURUS_CONF_OPTS += --with-cairo
