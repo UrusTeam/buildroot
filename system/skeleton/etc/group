@@ -23,4 +23,6 @@ staff:x:50:
 lock:x:54:
 netdev:x:82:
 users:x:100:
+i2c:x:138:
+spi:x:139:
 nogroup:x:65534:
