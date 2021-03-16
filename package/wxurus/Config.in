@@ -46,7 +46,7 @@ config BR2_PACKAGE_WXURUS_30
 
 config BR2_PACKAGE_WXURUS_31
 	bool "wxurus31"
-	depends on BR2_PACKAGE_LIBGTK3_X11 || BR2_PACKAGE_LIBGTK2 && BR2_PACKAGE_HAS_LIBGL
+	depends on BR2_PACKAGE_LIBGTK3_X11 || BR2_PACKAGE_LIBGTK2 || BR2_PACKAGE_HAS_LIBGL
 
 
 	comment "wxUrus 3.1.5 depends on X and Opengl gtk2 or gtk3"
