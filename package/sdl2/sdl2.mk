@@ -32,6 +32,11 @@ SDL2_POST_INSTALL_STAGING_HOOKS += SDL2_REMOVE_SDL2_CONFIG_CMAKE
 
 # We must enable static build to get compilation successful.
 SDL2_CONF_OPTS += --enable-static
+SDL2_CONF_OPTS += --enable-joystick
+
+ifeq ($(BR2_PACKAGE_LIBHID),y)
+SDL2_CONF_OPTS += --enable-hidapi
+endif
 
 ifeq ($(BR2_PACKAGE_HAS_UDEV),y)
 SDL2_DEPENDENCIES += udev
