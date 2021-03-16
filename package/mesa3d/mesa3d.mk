@@ -123,7 +123,7 @@ MESA3D_CONF_OPTS += \
 else
 MESA3D_CONF_OPTS += \
 	--enable-shared-glapi \
-	--with-gallium-drivers=$(subst $(space),$(comma),$(MESA3D_GALLIUM_DRIVERS-y)) \
+	--with-gallium-drivers=$(subst $(space),$(comma),$(MESA3D_GALLIUM_DRIVERS-y)),v3d \
 	--enable-gallium-extra-hud
 endif
 
