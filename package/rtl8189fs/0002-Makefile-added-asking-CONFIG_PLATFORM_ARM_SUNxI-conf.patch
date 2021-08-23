@@ -1,0 +1,26 @@
+From 718573432467c491b1ca69e33282ac05af8d1b4c Mon Sep 17 00:00:00 2001
+From: "Hiroshi Takey F. (hiro2233)" <htakey@gmail.com>
+Date: Mon, 23 Aug 2021 05:41:20 -0400
+Subject: [PATCH 2/2] Makefile: added asking CONFIG_PLATFORM_ARM_SUNxI config
+ if set.
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 1a5b31b..c1bb4ce 100644
+--- a/Makefile
++++ b/Makefile
+@@ -119,7 +119,7 @@ CONFIG_PLATFORM_DMP_PHILIPS = n
+ CONFIG_PLATFORM_MSTAR_TITANIA12 = n
+ CONFIG_PLATFORM_MSTAR = n
+ CONFIG_PLATFORM_SZEBOOK = n
+-CONFIG_PLATFORM_ARM_SUNxI = n
++CONFIG_PLATFORM_ARM_SUNxI ?= n
+ CONFIG_PLATFORM_ARM_SUN6I = n
+ CONFIG_PLATFORM_ARM_SUN7I = n
+ CONFIG_PLATFORM_ARM_SUN8I_W3P1 = n
+-- 
+2.17.3
+
