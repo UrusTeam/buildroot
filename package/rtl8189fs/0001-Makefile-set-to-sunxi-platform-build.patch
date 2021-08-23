@@ -1,0 +1,50 @@
+From 67c9d7a2900d6775e3bf4a62d5cf6464ee443b43 Mon Sep 17 00:00:00 2001
+From: "Hiroshi Takey F. (hiro2233)" <htakey@gmail.com>
+Date: Fri, 20 Aug 2021 22:31:18 -0400
+Subject: [PATCH] Makefile: set to sunxi platform build.
+
+---
+ Makefile | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 9566b48..45b6132 100644
+--- a/Makefile
++++ b/Makefile
+@@ -119,7 +119,7 @@ CONFIG_PLATFORM_DMP_PHILIPS = n
+ CONFIG_PLATFORM_MSTAR_TITANIA12 = n
+ CONFIG_PLATFORM_MSTAR = n
+ CONFIG_PLATFORM_SZEBOOK = n
+-CONFIG_PLATFORM_ARM_SUNxI = n
++CONFIG_PLATFORM_ARM_SUNxI = y
+ CONFIG_PLATFORM_ARM_SUN6I = n
+ CONFIG_PLATFORM_ARM_SUN7I = n
+ CONFIG_PLATFORM_ARM_SUN8I_W3P1 = n
+@@ -1362,6 +1362,8 @@ EXTRA_CFLAGS += -DCONFIG_CONCURRENT_MODE
+ EXTRA_CFLAGS += -DCONFIG_IOCTL_CFG80211 -DRTW_USE_CFG80211_STA_EVENT
+ 
+ EXTRA_CFLAGS += -DCONFIG_PLATFORM_OPS
++EXTRA_CFLAGS += -DCONFIG_CALIBRATE_TX_POWER_TO_MAX
++
+ ifeq ($(CONFIG_USB_HCI), y)
+ EXTRA_CFLAGS += -DCONFIG_USE_USB_BUFFER_ALLOC_TX
+ _PLATFORM_FILES += platform/platform_ARM_SUNxI_usb.o
+@@ -1372,12 +1374,12 @@ ifeq ($(CONFIG_SDIO_HCI), y)
+ _PLATFORM_FILES += platform/platform_ARM_SUNxI_sdio.o
+ endif
+ 
+-ARCH := arm
++ARCH ?= arm
+ #CROSS_COMPILE := arm-none-linux-gnueabi-
+ CROSS_COMPILE=/home/android_sdk/Allwinner/a10/android-jb42/lichee-jb42/buildroot/output/external-toolchain/bin/arm-none-linux-gnueabi-
+-KVER  := 3.0.8
++KVER  ?= 3.0.8
+ #KSRC:= ../lichee/linux-3.0/
+-KSRC=/home/android_sdk/Allwinner/a10/android-jb42/lichee-jb42/linux-3.0
++KSRC ?= /home/android_sdk/Allwinner/a10/android-jb42/lichee-jb42/linux-3.0
+ endif
+ 
+ ifeq ($(CONFIG_PLATFORM_ARM_SUN6I), y)
+-- 
+2.17.3
+
