@@ -406,8 +406,6 @@ define LINUX_INSTALL_DTB
 		$(LINUX_ARCH_PATH)/boot/$(if $(wildcard \
 		$(addprefix $(LINUX_ARCH_PATH)/boot/dts/,$(LINUX_DTBS))),dts/),$(LINUX_DTBS)) \
 		$(1)
-        mkdir -p $(BINARIES_DIR)/overlays
-        cp -f $(LINUX_ARCH_PATH)/boot/dts/overlays/*.dtbo $(BINARIES_DIR)/overlays
 endef
 endif # BR2_LINUX_KERNEL_APPENDED_DTB
 endif # BR2_LINUX_KERNEL_DTB_IS_SELF_BUILT
@@ -457,6 +455,11 @@ define LINUX_BUILD_CMDS
 	$(LINUX_BUILD_DTB)
 	$(LINUX_APPEND_DTB)
 endef
+
+ifeq ($(BR2_LINUX_KERNEL_DTB_OVERLAY_SUPPORT),y)
+	mkdir -p $(BINARIES_DIR)/overlays
+    cp -f $(LINUX_ARCH_PATH)/boot/dts/overlays/*.dtbo $(BINARIES_DIR)/overlays
+endif
 
 ifeq ($(BR2_LINUX_KERNEL_APPENDED_DTB),y)
 # When a DTB was appended, install the potential several images with
