@@ -374,10 +374,10 @@ if BR2_LINUX_KERNEL_DTS_SUPPORT
 # The variable below address the second case, were you only want
 # limited actions from buildroot.
 config BR2_LINUX_KERNEL_DTB_IS_SELF_BUILT
-	bool
+	bool "DTB_IS_SELF_BUILT"
 
 config BR2_LINUX_KERNEL_APPENDED_DTB
-	bool
+	bool "KERNEL_APPENDED_DTB"
 
 config BR2_LINUX_KERNEL_INTREE_DTS_NAME
 	string "In-tree Device Tree Source file names"
