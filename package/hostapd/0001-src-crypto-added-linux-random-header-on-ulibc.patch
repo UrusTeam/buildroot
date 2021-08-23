@@ -1,0 +1,28 @@
+From 3eda8c992d33369c705cffcd50fb2209aa58cc36 Mon Sep 17 00:00:00 2001
+From: "Hiroshi Takey F. (hiro2233)" <htakey@gmail.com>
+Date: Sat, 14 Aug 2021 03:31:29 -0400
+Subject: [PATCH] src: crypto: added linux/random header on ulibc.
+
+---
+ src/crypto/random.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/crypto/random.c b/src/crypto/random.c
+index 1cabf3f..9b7a644 100644
+--- a/src/crypto/random.c
++++ b/src/crypto/random.c
+@@ -26,7 +26,11 @@
+ #ifdef __linux__
+ #include <fcntl.h>
+ #ifdef CONFIG_GETRANDOM
++#ifdef __UCLIBC__
++#include <linux/random.h>
++#else
+ #include <sys/random.h>
++#endif
+ #endif /* CONFIG_GETRANDOM */
+ #endif /* __linux__ */
+ 
+-- 
+2.17.3
+
