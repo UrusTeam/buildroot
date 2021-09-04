@@ -1,0 +1,21 @@
+#!/bin/sh
+
+export DISPLAY=:0
+XDG_RUNTIME_DIR=/tmp/xdg
+export XDG_RUNTIME_DIR
+declare -x XDG_RUNTIME_DIR="/tmp/xdg"
+
+mkdir -p $XDG_RUNTIME_DIR
+chmod 700 $XDG_RUNTIME_DIR
+
+if [ -e /usr/bin/weston ] ; then
+    weston -c /etc/urus_weston.ini --shell=desktop-shell.so -B drm-backend.so --tty=7 2>/tmp/xdg/log.txt
+    exit 0
+fi
+
+if [ -e /usr/bin/matchbox-window-manager ] ; then
+    sudo chvt 7
+    matchbox-window-manager &
+    matchbox-desktop --font "Sans 10" --fontcol black --icon-size 40 --bg img-stretched:/usr/share/urus/images/urus_logo_v2.png &>/dev/null
+    #matchbox-panel --size 40 --orientation south &
+fi
