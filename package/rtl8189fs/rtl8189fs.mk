@@ -13,5 +13,9 @@ RTL8189FS_MODULE_MAKE_OPTS = \
 	KVER=$(LINUX_VERSION_PROBED) \
 	KSRC=$(LINUX_DIR)
 
+ifeq ($(BR2_PACKAGE_SUNXI_MALI_MAINLINE_DRIVER),y)
+CONFIG_PLATFORM_ARM_SUNxI = y
+endif
+
 $(eval $(kernel-module))
 $(eval $(generic-package))
