@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+# Start urus services.
+#
+
+case "$1" in
+  start)
+    if [ -e /usr/sbin/udhcpd ] ; then
+        /usr/sbin/udhcpd
+    fi
+
+    if [ -e /usr/sbin/forwardnat ] ; then
+        /usr/sbin/forwardnat
+    fi
+
+    mkdir -p /etc/crontabs
+    crond -l2 -c /etc/crontabs
+	;;
+  stop)
+	;;
+  restart|reload)
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?

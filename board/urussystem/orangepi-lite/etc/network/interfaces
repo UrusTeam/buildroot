@@ -1,0 +1,27 @@
+auto lo eth0 wlan1 wlan0
+
+iface lo inet loopback
+
+iface eth0 inet dhcp
+  pre-up /etc/network/nfs_check
+  wait-delay 10
+  hostname $(hostname)
+
+#iface eth0 inet static
+#  address 192.168.1.14
+#  gateway 192.168.1.1
+#  network 192.168.1.0
+#  netmask 255.255.255.0
+#  broadcast 192.168.1.255
+
+iface wlan1 inet dhcp
+  pre-up /usr/sbin/wpa_supplicant -B -Dnl80211 -iwlan1 -c /etc/wpa_supplicant.conf
+
+iface wlan0 inet static
+  pre-up /bin/sleep 1 ; /usr/sbin/hostapd -B /etc/hostapd.conf
+  address 192.168.43.1
+  #network 192.168.1.0
+  gateway 192.168.43.1
+  netmask 255.255.255.0
+  #broadcast 192.168.0.255
+  #post-up /bin/sleep 10 ; /usr/sbin/udhcpd
