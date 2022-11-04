@@ -1,0 +1,3 @@
+Defaults env_keep += XDG_RUNTIME_DIR
+ALL ALL = (ALL) NOPASSWD: /usr/bin/urusexec
+ALL ALL = (ALL) NOPASSWD: /usr/bin/chvt
