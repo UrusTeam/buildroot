@@ -1,0 +1,53 @@
+################################################################################
+#
+# allegro
+#
+################################################################################
+
+ALLEGRO_VERSION = 5.2.8
+ALLEGRO_SITE = $(call github,liballeg,allegro5,$(ALLEGRO_VERSION))
+
+ALLEGRO_INSTALL_STAGING = YES
+
+ALLEGRO_DEPENDENCIES = host-pkgconf \
+	libpng sdl2 sdl2_image
+
+ALLEGRO_CONF_OPTS += \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DALLEGRO_SDL=ON \
+    -DSHARED=OFF \
+    -DWANT_MONOLITH=ON \
+    -DWANT_ALLOW_SSE=OFF \
+    -DWANT_DOCS=OFF \
+    -DWANT_TESTS=OFF \
+    -DWANT_OPENAL=OFF \
+	-DGL_BUILD_TYPE=gles2+ \
+	-DWANT_X11=OFF \
+	-DWANT_X11_XF86VIDMODE=OFF \
+	-DWANT_X11_XINERAMA=OFF \
+	-DWANT_X11_XRANDR=OFF \
+	-DWANT_X11_XSCREENSAVER=OFF \
+	-DWANT_D3D=OFF \
+	-DWANT_D3D9EX=OFF \
+	-DWANT_SHADERS_D3D=OFF \
+	-DWANT_SHADERS_GL=OFF \
+	-DGL_AUTO_BUILD_TYPE=gles2+ \
+	-DWANT_GLES3=OFF \
+	-DWANT_AUDIO=OFF \
+	-DWANT_IMAGE_WEBP=OFF \
+	-DWANT_TTF=OFF \
+	-DWANT_PHYSFS=OFF \
+	-DWANT_VIDEO=OFF \
+	-DWANT_DOCS_HTML=OFF \
+	-DWANT_DOCS_MAN=OFF \
+	-DWANT_RELEASE_LOGGING=OFF \
+	-DWANT_DEMO=OFF \
+	-DWANT_EXAMPLES=OFF \
+	-DWANT_POPUP_EXAMPLES=OFF \
+	-DWANT_MUDFLAP=OFF \
+	-DWANT_D3D9EX=OFF \
+    -DCMAKE_C_FLAGS="${USE_FLAGS[*]}" \
+    -DCMAKE_CXX_FLAGS="${USE_FLAGS[*]}" \
+    -DCMAKE_EXE_LINKER_FLAGS="${USE_FLAGS[*]}"
+
+$(eval $(cmake-package))
