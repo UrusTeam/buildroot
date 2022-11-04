@@ -35,7 +35,8 @@ WPA_SUPPLICANT_CONFIG_ENABLE = \
 	CONFIG_MATCH_IFACE
 
 WPA_SUPPLICANT_CONFIG_DISABLE = \
-	CONFIG_SMARTCARD
+	CONFIG_SMARTCARD \
+	CONFIG_GETRANDOM
 
 # libnl-3 needs -lm (for rint) and -lpthread if linking statically
 # And library order matters hence stick -lnl-3 first since it's appended
