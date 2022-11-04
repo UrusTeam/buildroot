@@ -1,0 +1,25 @@
+From 68128d78d98d9c1a1946dbd857761450cbac9870 Mon Sep 17 00:00:00 2001
+From: "Hiroshi Takey F. (hiro2233)" <htakey@gmail.com>
+Date: Wed, 12 Oct 2022 22:34:43 -0400
+Subject: [PATCH] kdrive: set maxScanCode to 247 by default.
+
+---
+ hw/kdrive/src/kinput.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/kdrive/src/kinput.c b/hw/kdrive/src/kinput.c
+index a539ca5..7b39e8f 100644
+--- a/hw/kdrive/src/kinput.c
++++ b/hw/kdrive/src/kinput.c
+@@ -879,7 +879,7 @@ KdNewKeyboard(void)
+         return NULL;
+ 
+     ki->minScanCode = 0;
+-    ki->maxScanCode = 0;
++    ki->maxScanCode = 247;
+     ki->leds = 0;
+     ki->bellPitch = 1000;
+     ki->bellDuration = 200;
+-- 
+2.17.3
+
