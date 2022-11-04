@@ -1,4 +1,7 @@
-config BR2_PACKAGE_WXURUS
+comment "wxUrus depends on X, Opengl and gtk2 or gtk3"
+    depends on !BR2_PACKAGE_XORG7
+
+menuconfig BR2_PACKAGE_WXURUS
 	bool "wxurus"
 	depends on BR2_PACKAGE_XORG7 || BR2_PACKAGE_XSERVER_XORG_SERVER || BR2_PACKAGE_WAYLAND || BR2_PACKAGE_QT5
 #    depends on BR2_PACKAGE_XSERVER_XORG_SERVER
@@ -8,13 +11,25 @@ config BR2_PACKAGE_WXURUS
 	select BR2_PACKAGE_LIBGLU if BR2_PACKAGE_HAS_LIBGL
 #    select BR2_PACKAGE_HAS_LIBGL
 #    select BR2_PACKAGE_PROVIDES_LIBGL
-	select BR2_PACKAGE_XLIB_LIBX11 if BR2_PACKAGE_XORG7
-	select BR2_PACKAGE_XLIB_LIBXFT if BR2_PACKAGE_XORG7
+#	select BR2_PACKAGE_XLIB_LIBX11 if BR2_PACKAGE_XORG7
+#	select BR2_PACKAGE_XLIB_LIBXFT if BR2_PACKAGE_XORG7
 #    select BR2_PACKAGE_LIBPNG
 #    select BR2_PACKAGE_JPEG_TURBO
 #    select BR2_PACKAGE_EXPAT
 #    select BR2_PACKAGE_TIFF
     select BR2_PACKAGE_PANGO
+    select BR2_PACKAGE_CAIRO if BR2_PACKAGE_LIBGTK2
+    select BR2_PACKAGE_LIBGLIB2 if BR2_PACKAGE_LIBGTK2
+    select BR2_PACKAGE_GDK_PIXBUF if BR2_PACKAGE_LIBGTK2
+	select BR2_PACKAGE_FONTCONFIG if BR2_PACKAGE_LIBGTK2
+	select BR2_PACKAGE_XLIB_LIBX11 if BR2_PACKAGE_XORG7
+	select BR2_PACKAGE_XLIB_LIBXEXT if BR2_PACKAGE_XORG7
+	select BR2_PACKAGE_XLIB_LIBXRENDER if BR2_PACKAGE_XORG7
+	select BR2_PACKAGE_LIBICONV if !BR2_ENABLE_LOCALE
+	select BR2_PACKAGE_LIBFFI
+	select BR2_PACKAGE_PCRE
+	select BR2_PACKAGE_PCRE_UCP
+	select BR2_PACKAGE_ZLIB
 
 	help
 	  wxUrus is a gui sdk for URUS OS
@@ -25,35 +40,24 @@ config BR2_PACKAGE_WXURUS
 
 if BR2_PACKAGE_WXURUS
 
-	comment "wxUrus 2.8 depends on X, Opengl and gtk2"
-	depends on !BR2_PACKAGE_LIBGTK2 || !BR2_PACKAGE_HAS_LIBGL
-
 config BR2_PACKAGE_WXURUS_28
 	bool "wxurus28"
-	depends on BR2_PACKAGE_LIBGTK2 && BR2_PACKAGE_HAS_LIBGL
 
-
-	comment "wxUrus 3.0.2 depends on X and Opengl gtk2 or gtk3"
-	depends on !BR2_PACKAGE_LIBGTK3_X11 || !BR2_PACKAGE_LIBGTK2 && !BR2_PACKAGE_HAS_LIBGL
+	comment "wxUrus 2.8 depends on X and Opengl gtk2"
 
 config BR2_PACKAGE_WXURUS_30
 	bool "wxurus30"
-	depends on BR2_PACKAGE_LIBGTK3_X11 || BR2_PACKAGE_LIBGTK2 && BR2_PACKAGE_HAS_LIBGL
 
-
-	comment "wxUrus 3.1 depends on X and Opengl gtk2 or gtk3"
-	depends on !BR2_PACKAGE_LIBGTK3_X11 || !BR2_PACKAGE_LIBGTK2 && !BR2_PACKAGE_HAS_LIBGL
+	comment "wxUrus 3.0 depends on X and Opengl, gtk2 or gtk3"
 
 config BR2_PACKAGE_WXURUS_31
 	bool "wxurus31"
-	depends on BR2_PACKAGE_LIBGTK3_X11 || BR2_PACKAGE_LIBGTK2 || BR2_PACKAGE_HAS_LIBGL
 
-
-	comment "wxUrus 3.1.5 depends on X and Opengl gtk2 or gtk3"
-	depends on !BR2_PACKAGE_HAS_LIBGL
+	comment "wxUrus 3.1 depends on X and Opengl, gtk2 or gtk3"
 
 config BR2_PACKAGE_WXURUS_315
 	bool "wxurus315"
-	depends on BR2_PACKAGE_HAS_LIBGL
+
+	comment "wxUrus 3.1.5 depends on X and Opengl, gtk2 or gtk3"
 
 endif
