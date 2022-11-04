@@ -1,0 +1,4 @@
+config BR2_PACKAGE_ALLEGRO
+	bool "allegro"
+	help
+	  allegro graphic toolkit
