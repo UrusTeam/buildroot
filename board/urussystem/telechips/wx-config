@@ -1,0 +1,2 @@
+#!/bin/sh
+$HOME/urus_buildroot/buildroot/output/host/arm-urus-linux-gnueabi/sysroot/usr/bin/wx-config --prefix=$HOME/urus_buildroot/buildroot/output/host/arm-urus-linux-gnueabi/sysroot/usr "$@"
