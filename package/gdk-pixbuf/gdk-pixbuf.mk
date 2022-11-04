@@ -24,6 +24,7 @@ HOST_GDK_PIXBUF_CONF_ENV = \
 	gio_can_sniff=no
 
 GDK_PIXBUF_CONF_OPTS = --disable-glibtest
+
 HOST_GDK_PIXBUF_CONF_OPTS = --disable-introspection
 
 ifeq ($(BR2_PACKAGE_GOBJECT_INTROSPECTION),y)
@@ -32,6 +33,8 @@ GDK_PIXBUF_DEPENDENCIES += gobject-introspection
 else
 GDK_PIXBUF_CONF_OPTS += --disable-introspection
 endif
+
+GDK_PIXBUF_CONF_OPTS = --enable-debug=no
 
 ifneq ($(BR2_PACKAGE_LIBPNG),y)
 GDK_PIXBUF_CONF_OPTS += --without-libpng
