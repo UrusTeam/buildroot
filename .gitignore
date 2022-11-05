@@ -13,3 +13,5 @@
 *.rej
 *~
 *.pyc
+board/urussystem/telechips/Android-Image-Kitchen
+board/urussystem/telechips/tools
