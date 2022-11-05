@@ -2,6 +2,7 @@
 # post-build.sh for Telechips - Urus System.
 # 2017,2022, Hiroshi Takey <htakey@gmail.com>
 
+PUSHD="$(pwd)"
 BOARD_DIR="$(dirname $0)"
 
 MKBOOTIMG=$BOARD_DIR/tools/mkbootimg
@@ -11,6 +12,7 @@ BOOT_CMD_H=$BINARIES_DIR/boot.img
 if [ ! -f $MKBOOTIMG ]; then
     echo "Getting mkbootimg from sources..."
     #wget -P $BOARD_DIR/tools/ https://android.googlesource.com/platform/system/core/+archive/master/mkbootimg.tar.gz
+    cd $BOARD_DIR
     git clone https://github.com/osm0sis/Android-Image-Kitchen.git
     cd Android-Image-Kitchen
     git checkout AIK-Linux
@@ -21,6 +23,7 @@ if [ ! -f $MKBOOTIMG ]; then
     make
     cp mkbootimg ../Android-Image-Kitchen/bin/linux/x86_64/
     cp unpackbootimg ../Android-Image-Kitchen/bin/linux/x86_64/
+    cd $PUSHD
 fi
 
 URUS_INITSRC=$BOARD_DIR/S30psplash
@@ -44,6 +47,10 @@ cp -f $BOARD_DIR/urus_srvmode ${TARGET_DIR}/sbin/
 
 cp -f $URUSX_BINSRC $URUSX_BINTGT
 cp -f $URUS_INITSRC $URUS_INITTGT
+
+cp -f $BOARD_DIR/fstab ${TARGET_DIR}/etc/
+mkdir -p ${TARGET_DIR}/mnt/disk1
+mkdir -p ${TARGET_DIR}/mnt/disk2
 
 DUMMY_RAMDISK=$BINARIES_DIR/dummyramdisk.cpio.gz
 
