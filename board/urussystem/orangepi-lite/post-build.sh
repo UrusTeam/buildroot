@@ -44,6 +44,7 @@ cp -f $BOARD_DIR/forwardnat ${TARGET_DIR}/usr/sbin/
 cp -f $BOARD_DIR/S50start_urusservice $URUS_INITTGT/
 cp -f $BOARD_DIR/reconnectwifi ${TARGET_DIR}/usr/sbin/
 
+mkdir -p ${TARGET_DIR}/etc/sudoers.d
 cp -f $BOARD_DIR/10-urus-app-sudoers ${TARGET_DIR}/etc/sudoers.d/
 cp -f $BOARD_DIR/urus_weston.ini ${TARGET_DIR}/etc/
 
