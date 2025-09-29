@@ -26,8 +26,9 @@ fi
 
 if [ -e /usr/bin/matchbox-window-manager ] ; then
     #sudo chvt 7
-    matchbox-window-manager -use_cursor no &
-    matchbox-desktop --icon-size 1 --bg img-stretched:/usr/share/urus/images/urus_logo_v2.png &>/dev/null &
+    #matchbox-window-manager -use_cursor no &
+    matchbox-desktop --icon-size 1 --no-title --bg img-stretched:/usr/share/urus/images/urus_logo_v2.png &>/dev/null &
+    ratpoison -f /etc/ratpoison.rc
     sleep 10
     start_apps
     #matchbox-panel --size 40 --orientation south &
