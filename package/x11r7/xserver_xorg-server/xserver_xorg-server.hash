@@ -10,3 +10,6 @@ sha512  a07bee380bb72f2117fe6f831a6e4aded19bea1f2b36e42a019a30348e98d6fe65c0617c
 # Locally calculated
 sha256  4cc0447a22635c7b2f1a93fec4aa94f1970fadeb72a063de006b51cf4963a06f  COPYING
 none xxx  xorg-server-1.20.13.tar.xz
+
+sha256 73208283875dc7f02c66546f8d83fe2e70ffc6d639c9394b8754d2edcbff6e2f  xorg-server-1.17.4.tar.gz
+sha256 26f801f4d92216995f389873cf3b4e90069cf63e94bc5dd09ebbf7fd7e1ddcc2  xorg-server-1.20.13.tar.gz
