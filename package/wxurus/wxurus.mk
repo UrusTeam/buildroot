@@ -124,7 +124,7 @@ endif
 WXURUS_CONF_OPTS += --enable-cmdline
 #WXURUS_CONF_OPTS += --disable-gtktest
 #WXURUS_CONF_OPTS += --with-libpng=sys
-WXURUS_CONF_OPTS += --with-regex=sys
+WXURUS_CONF_OPTS += --with-regex=builtin
 WXURUS_CONF_OPTS += --with-zlib=sys
 #WXURUS_CONF_OPTS += --with-libjpeg=sys
 #WXURUS_CONF_OPTS += --with-libtiff=sys
