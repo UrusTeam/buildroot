@@ -52,14 +52,16 @@ cp -f $BOARD_DIR/fstab ${TARGET_DIR}/etc/
 mkdir -p ${TARGET_DIR}/mnt/disk1
 mkdir -p ${TARGET_DIR}/mnt/disk2
 
+cp -f $BOARD_DIR/ratpoison.rc ${TARGET_DIR}/etc/
+
 DUMMY_RAMDISK=$BINARIES_DIR/dummyramdisk.cpio.gz
 
 find system/skeleton | cpio --quiet -H newc -o | gzip -9 -n > $DUMMY_RAMDISK
 
 # mkbootimg script
-$MKBOOTIMG  --cmdline 'console=ttyTCC0,115200n8 root=/dev/mmcblk0p2 rw rootwait init=/linuxrc' \
+$MKBOOTIMG  --cmdline 'console=ttyTCC0,115200n8 video=1024x600@60me root=/dev/mmcblk0p2 rw rootwait init=/linuxrc' \
             --kernel $BOOT_CMD --ramdisk $DUMMY_RAMDISK                                          \
-            --pagesize 2048                                                                      \
+            --pagesize 4096                                                                      \
             --base 0x80000000                                                                    \
             -o $BOOT_CMD_H
 
