@@ -20,7 +20,7 @@ case "$1" in
     #clear
     echo 0 > /proc/sys/kernel/printk
 	echo "Starting..."
-	/usr/bin/X vt1 -noreset -s 0 -mouse mouse -keybd keyboard :0 &>/dev/null &
+	/usr/bin/X :0 -screen 1024x600 vt1 -noreset -s 0 -mouse tslib,1,device=/dev/input/event2 -keybd keyboard &>/dev/null &
 	/bin/sleep 3
 	/usr/bin/psplash -n &
 	/bin/sleep 1
